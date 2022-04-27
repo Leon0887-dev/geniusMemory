@@ -64,21 +64,75 @@
 /* 1. Tags
 /**********************************/
 
+html{
+	font-size:62.5%;
+}
 body {
 	background-image: url('http://cdn.backgroundhost.com/backgrounds/subtlepatterns/retro_intro.png');
+	font-family: "Bungee", verdana, sans-serif;
 }
 
 /**********************************/
 /* 2. Body
 /**********************************/
 
+.container{
+	width: var(--game-size);
+	margin-left: auto;
+	margin-right: auto;
+}
+
 /**********************************/
 /* 3. Game
 /**********************************/
-
+.game{
+	width: var(--game-size);
+	height:var(--game-size);
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 5rem;
+}
 /**********************************/
 /* 3.1 Pads
 /**********************************/
+.game_pad{
+	width: calc(var(--game-size) / 2);
+	height: calc(var(--game-size) / 2);
+}
+
+.game_pad--tl{
+	background-color: var(--clr-normal-green);
+	border-top-left-radius: 100%;
+}
+.game_pad--tr{
+	background-color: var(--clr-normal-red);
+	border-top-right-radius: 100%;
+}
+.game_pad--bl{
+	background-color: var(--clr-normal-yellow);
+	border-bottom-left-radius: 100%;
+}
+.game_pad--br{
+	background-color: var(--clr-normal-blue);
+	border-bottom-right-radius: 100%;
+}
+
+.game_pad--tl.game_pad--active{
+	background-color: var(--clr-light-green);
+}
+.game_pad--tr.game_pad--active{
+	background-color: var(--clr-light-red);
+}
+.game_pad--bl.game_pad--active{
+	background-color: var(--clr-light-yellow);
+}
+.game_pad--br.game_pad--active{
+	background-color: var(--clr-light-blue);
+}
+
+.game_pad--btn{
+	cursor: pointer;
+}
 
 /**********************************/
 /* 3.2 Center
