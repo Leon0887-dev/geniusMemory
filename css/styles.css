@@ -91,6 +91,21 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	margin-top: 5rem;
+	justify-content: center;
+	align-items: center;
+}
+.game_title{
+	font-size: 3.8rem;
+	text-transform: uppercase;
+	margin: 0;
+	padding-left: 1.2rem;
+	padding-top: 4.7rem;
+}
+.reg{
+	font-family: verdana, sans-serif;
+	font-size: 1.8rem;
+	margin-left: -1rem;
+	vertical-align: top;
 }
 /**********************************/
 /* 3.1 Pads
@@ -137,10 +152,44 @@ body {
 /**********************************/
 /* 3.2 Center
 /**********************************/
+.game_options{
+	position: absolute;
+	background-color: var(--clr-center);
+	width: calc(var(--game-size) / 2);
+	height: calc(var(--game-size) / 2);
+	border: var(--game-border);
+	border-radius: 25rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 
 /**********************************/
 /* 3.2.1 GUI
 /**********************************/
+.gui{
+	padding-left: 1.5rem;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+}
+.group{
+	margin-right: 2.2rem;
+}
+.group-large{
+	display: flex;
+	width: 10rem;
+	margin-left: 4.5rem;
+}
+
+.gui_label{
+	font-family: "Arima Madurai", cursive;
+	font-weight: bold;
+	font-size: 0.75rem;
+	text-align: center;
+	text-transform: uppercase;
+}
+
 
 /**********************************/
 /* 4. Footer
