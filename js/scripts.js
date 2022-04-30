@@ -44,11 +44,15 @@ const turnOnGame = () =>{
 	_data.playerSequence = [];
 }
 
+const activateStrictMode = () =>{
+	if(!_data.gameOn) return
+	
+	_data.strict = _gui.led.classList.toggle('gui_led--active');
+}
+
 _gui.switch.addEventListener("click", turnOnGame);
 
-_gui.strict.addEventListener("click", () => {
-
-});
+_gui.strict.addEventListener("click", activateStrictMode);
 
 _gui.start.addEventListener("click", () => {
 
