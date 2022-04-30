@@ -95,7 +95,7 @@ body {
 	align-items: center;
 }
 .game_title{
-	font-size: 3.8rem;
+	font-size: 4rem;
 	text-transform: uppercase;
 	margin: 0;
 	padding-left: 1.2rem;
@@ -113,6 +113,7 @@ body {
 .game_pad{
 	width: calc(var(--game-size) / 2);
 	height: calc(var(--game-size) / 2);
+	border: var(--game-border)  ;
 }
 
 .game_pad--tl{
@@ -189,8 +190,91 @@ body {
 	text-align: center;
 	text-transform: uppercase;
 }
+.gui_label--switch{
+	margin: 0;
+	padding-top: 0.75rem;
+}
+.gui_btn{
+	width: 2.5rem;
+	height: 2.5rem;
+	margin-left: .2rem;
+	border-radius: 5rem;
+	box-shadow: 0 .2rem .3rem #222;
+	border: .4rem solid #444;
+	cursor: pointer;
+}
 
+.gui_btn:active{
+	transform: translate(0, .3rem);
+	box-shadow: none;
+}
 
+.gui_btn--start{
+	background-color: red;
+}
+
+.gui_btn--strict{
+	background-color: yellow;
+}
+
+.gui_btn-switch{
+	background-color: #222;
+	margin-left: .5rem;
+	margin-right: .5rem;
+	width: 5rem;
+	height: 2.3rem;
+	border-radius: .3rem;
+	cursor: pointer;
+}
+
+.gui_btn-switch::before{
+	content: "";
+	background-color: var(--clr-switch);
+	display: block;
+	position: relative;
+	left: 2.5rem;
+	width: 2.2rem;
+	height: 1.9rem;
+	border-radius: .3rem;
+	border: .2rem solid #333;
+
+}
+
+.gui_btn-switch--on::before{
+	left: 0;
+}
+
+.gui_counter{
+	background-color: var(--clr-counter-bg);
+	color: var(--clr-counter-off);
+	font-family: "Inceland", cursive;
+	font-weight: bold;
+	font-size: 3rem;
+	text-align: right;
+	width: 5.5rem;
+	border: .3rem solid #000;
+	border-radius: 1rem;
+	padding-right: .2rem;
+	padding-left: .3rem;
+}
+
+.gui_counter--on{
+	color: var(--clr-counter-on);
+}
+
+.gui_led{
+	background-color: #32050C;
+	margin-left: 1rem;
+	margin-bottom: .5rem;
+	width: .8rem;
+	height: .8rem;
+	border: .2rem solid #222;
+	border-radius: 2rem;
+}
+
+.gui_led--active{
+	background-color: red;
+}
 /**********************************/
 /* 4. Footer
 /**********************************/
