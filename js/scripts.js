@@ -11,12 +11,12 @@ const _data = {
 };
 
 const _gui = {
-	counter: document.querySelector(".gui__counter"),
-	switch: document.querySelector(".gui__btn-switch"),
-	led: document.querySelector(".gui__led"),
-	strict: document.querySelector(".gui__btn--strict"),
-	start: document.querySelector(".gui__btn--start"),
-	pads: document.querySelectorAll(".game__pad")
+	counter: document.querySelector(".gui_counter"),
+	switch: document.querySelector(".gui_btn-switch"),
+	led: document.querySelector(".gui_led"),
+	strict: document.querySelector(".gui_btn--strict"),
+	start: document.querySelector(".gui_btn--start"),
+	pads: document.querySelectorAll(".game_pad")
 }
 
 const _soundUrls = [
@@ -31,9 +31,20 @@ _soundUrls.forEach(sndPath => {
 	_data.sounds.push(audio);
 });
 
-_gui.switch.addEventListener("click", () => {
+const turnOnGame = () =>{
+	_data.gameOn = _gui.switch.classList.toggle("gui_btn-switch--on");
+	
+	_gui.counter.classList.toggle('gui_counter--on')
+	_gui.counter.innerHTML = "--";
 
-});
+	_data.strict = false;
+	_data.playerCanPlay = false;
+	_data.score = 0;
+	_data.gameSequence = [];
+	_data.playerSequence = [];
+}
+
+_gui.switch.addEventListener("click", turnOnGame);
 
 _gui.strict.addEventListener("click", () => {
 
