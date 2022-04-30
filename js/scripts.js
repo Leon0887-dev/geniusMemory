@@ -42,6 +42,9 @@ const turnOnGame = () =>{
 	_data.score = 0;
 	_data.gameSequence = [];
 	_data.playerSequence = [];
+	_gui.led.classList.remove('gui_led--active');
+
+	disablePads();
 }
 
 const activateStrictMode = () =>{
@@ -99,5 +102,5 @@ const changePadCursor = (cursorType) => {
 }
 
 const disablePads = () => {
-
+	_gui.pads.forEach(pad => pad.classList.remove('game_pad--active'));
 }
