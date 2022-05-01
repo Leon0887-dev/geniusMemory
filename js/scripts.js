@@ -73,6 +73,7 @@ _gui.pads.forEach(pad => {
 const startGame = () => {
 	blink('--', ()=>{
 		newColor();
+		playSequence();
 	})
 }
 
@@ -91,7 +92,37 @@ const newColor = () => {
 }
 
 const playSequence = () => {
+	let counter = 0,
+		padOn = true;
 
+	_data.playerSequence = [];
+	_data.playerCanPlay = false;
+	const INTERVAL = setInterval(()=>{
+		if(!_data.gameOn){
+			clearInterval(INTERVAL);
+			disablePads();
+			return
+		}
+		if(padOn){
+			if(counter === _data.gameSequence.length){
+				clearInterval(INTERVAL);
+				disablePads();
+				waitForPlayerClick();
+				_data.playerCanPlay = true;
+				return
+			}
+			const sndId = _data.gameSequence[counter];
+			const PAD = _gui.pads[sndId];
+
+			_data.sounds[sndId].play();
+			PAD.classList.add("game_pad--active");
+			counter++;
+		}else{
+			disablePads();
+		}
+
+		padOn = !padOn;
+	},750)
 }
 
 const blink = (text, callback) => {
@@ -124,6 +155,12 @@ const blink = (text, callback) => {
 
 const waitForPlayerClick = () => {
 
+	clearTimeout(_data.timeout);
+	_data.timeout = setTimeout(()=>{
+		if(!_data.playerCanPlay) return;
+		disablePads();
+		playSequence();
+	}, 5000)
 }
 
 const resetOrPlayAgain = () => {
