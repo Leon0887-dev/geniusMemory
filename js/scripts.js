@@ -58,7 +58,8 @@ _gui.switch.addEventListener("click", turnOnGame);
 _gui.strict.addEventListener("click", activateStrictMode);
 
 _gui.start.addEventListener("click", () => {
-
+	
+	startGame();
 });
 
 const padListener = (e) => {
@@ -70,15 +71,23 @@ _gui.pads.forEach(pad => {
 });
 
 const startGame = () => {
-
+	blink('--', ()=>{
+		newColor();
+	})
 }
 
 const setScore = () => {
+	const SCORE = _data.score.toString();
+	const DISPLAY = "00".substring(0,2 - SCORE.length) + SCORE;
 
+	_gui.counter.innerHTML = DISPLAY;
 }
 
 const newColor = () => {
+	_data.gameSequence.push(Math.floor(Math.random() * 4));
+	_data.score++;
 
+	setScore();
 }
 
 const playSequence = () => {
@@ -86,7 +95,31 @@ const playSequence = () => {
 }
 
 const blink = (text, callback) => {
+	let counter = 0; 
+		on = true;
+	
+	_gui.counter.innerHTML =  text;
+	const INTERVAL = setInterval(() =>{
+		if(!_data.gameOn) {
+			clearInterval(INTERVAL)
+			_gui.counter.classList.remove("gui_counter--on")
+			return;
+		}
 
+		if(on){
+			_gui.counter.classList.remove('gui_counter--on')
+		}else{
+			_gui.counter.classList.add('gui_counter--on')
+
+			if(++counter === 3){
+				clearInterval(INTERVAL);
+				callback();
+			}
+		}
+
+		on = !on;
+	},250)
+		
 }
 
 const waitForPlayerClick = () => {
